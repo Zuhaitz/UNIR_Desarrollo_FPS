@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     PlayerControls controls;
     CharacterController controller;
     Camera mainCamera;
-
+    
+    [SerializeField] GameObject bulletSpawn;
     [SerializeField] float sensitivity = 100f;
 
     Vector2 rotate;
@@ -28,6 +29,8 @@ public class Player : MonoBehaviour
 
         controls.Player.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.Player.Move.canceled += ctx => move = Vector2.zero;
+
+        controls.Player.Shoot.performed += ctx => ShootGun();
     }
 
     void Start(){
@@ -56,6 +59,10 @@ public class Player : MonoBehaviour
         Vector3 m = transform.right * move.x + transform.forward * move.y;
 
         controller.Move(m * speed* Time.deltaTime);
+    }
+
+    private void ShootGun(){
+        GameManager.instance.Shoot(bulletSpawn.transform.position, mainCamera.transform.forward);
     }
 
     private void OnEnable()
