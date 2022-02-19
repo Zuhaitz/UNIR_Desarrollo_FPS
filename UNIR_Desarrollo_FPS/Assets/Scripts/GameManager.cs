@@ -18,12 +18,26 @@ public class GameManager : MonoBehaviour
     //Referencias
     public Player player;
     public BulletManager bulletManager;
+    public InterfaceManager interfaceManager;
 
     //Recursos
-    public int balas = 6;
-    public int puntos;
+    public int bullets = 6;
+    public int score;
 
     public void Shoot(Vector3 position, Vector3 direction){
-        bulletManager.Shoot(position, direction);
+        if(bullets>0){
+            bulletManager.Shoot(position, direction);
+            //balas--;
+            //TODO: Actualizar interfaz
+        }
+
+        if(bullets<=0){
+            //TODO: Finalizar partida
+        }
+    }
+
+    public void AddScore(int points){
+        score += points;
+        interfaceManager.UpdateScore(score);
     }
 }

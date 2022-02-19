@@ -21,6 +21,7 @@ public class BulletManager : MonoBehaviour
 
         if (bullet == null){
             bullet = Instantiate(bulletPrefab);
+            bullet.SetActive(false);
             bullets.Add(bullet);
         }
 

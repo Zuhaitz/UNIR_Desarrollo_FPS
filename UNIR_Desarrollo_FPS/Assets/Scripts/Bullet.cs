@@ -17,6 +17,7 @@ public class Bullet : MonoBehaviour
     public void Shoot(Vector3 direction){
         active = true;
         lastShown = Time.time;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.SetActive(true);
         gameObject.GetComponent<Rigidbody>().AddForce(direction.normalized * speed, ForceMode.Impulse);
     }
@@ -27,6 +28,7 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision coll){
+        //TODO: Hacer algo con la colision
         Hide();
     }
 }
