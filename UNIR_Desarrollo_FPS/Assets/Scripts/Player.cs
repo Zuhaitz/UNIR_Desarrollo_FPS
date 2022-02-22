@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     CharacterController controller;
     Camera mainCamera;
     
-    [SerializeField] GameObject bulletSpawn;
+    [SerializeField] Gun gun;
     [SerializeField] float sensitivity = 100f;
 
     Vector2 rotate;
@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
 
     Vector2 move;
     [SerializeField] float speed = 12f;
-
 
     void Awake(){
         mainCamera = Camera.main;
@@ -62,7 +61,7 @@ public class Player : MonoBehaviour
     }
 
     private void ShootGun(){
-        GameManager.instance.Shoot(bulletSpawn.transform.position, mainCamera.transform.forward);
+        gun.Shoot();
     }
 
     private void OnEnable()

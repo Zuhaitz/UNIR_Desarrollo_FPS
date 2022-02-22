@@ -126,4 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  speed: 20
+  speed: 200
