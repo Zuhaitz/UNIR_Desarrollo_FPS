@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     CharacterController controller;
     Camera mainCamera;
     
-    [SerializeField] Gun gun;
+    public Gun gun;
     [SerializeField] float sensitivity = 100f;
 
     Vector2 rotate;

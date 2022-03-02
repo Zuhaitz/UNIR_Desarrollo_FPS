@@ -5,7 +5,7 @@ public class InterfaceManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI i_Bullets;
     [SerializeField] TextMeshProUGUI i_Score;
-    [SerializeField] GameObject i_EndGame;
+    [SerializeField] EndMenu i_EndGame;
 
     public void UpdateScore(int score){
         i_Score.text = $"Score: {score}";
@@ -18,6 +18,7 @@ public class InterfaceManager : MonoBehaviour
     public void EndGame(int score){
         i_Bullets.enabled = false;
         i_Score.enabled = false;
-        i_EndGame.SetActive(true);
+        i_EndGame.SetFinalScore(score);
+        i_EndGame.gameObject.SetActive(true);
     }
 }

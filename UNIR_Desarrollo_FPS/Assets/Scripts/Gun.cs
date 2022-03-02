@@ -3,6 +3,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     Camera mainCamera;
+    public int bullets = 6;
     float lastShoot;
     [SerializeField] float fireSpeed = 0.2f;
     [SerializeField] Transform bulletSpawn;
@@ -14,7 +15,7 @@ public class Gun : MonoBehaviour
     }
 
     public void Shoot(){
-        if (Time.time - lastShoot > fireSpeed){
+        if (Time.time - lastShoot > fireSpeed && bullets>0){
             lastShoot = Time.time;
             anim.SetTrigger("Fire");
             GameObject flash = Instantiate(flashPrefab, bulletSpawn.position, bulletSpawn.rotation);
@@ -22,7 +23,7 @@ public class Gun : MonoBehaviour
 
             Vector3 direction = CalculateDirection();
             GameManager.instance.Shoot(bulletSpawn.position, direction);
-
+            bullets--;
         }
     }
 

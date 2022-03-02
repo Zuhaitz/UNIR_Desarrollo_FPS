@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     
     //Referencias
@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     private bool gameEnded = false;
 
     void Start(){
-        interfaceManager.UpdateBullets(bullets);
+        bullets = player.gun.bullets;
+        interfaceManager.UpdateBullets(bullets);      
     }
 
     public void Shoot(Vector3 position, Vector3 direction){
@@ -35,16 +36,20 @@ public class GameManager : MonoBehaviour
             bullets--;
             interfaceManager.UpdateBullets(bullets);
         }
+    }
 
-        if(bullets<=0){
-            //TODO: Finalizar partida
-            EndGame();
-        }
+    public void bulletCollision(){
+        if(bullets<=0)
+            Invoke("EndGame", 0.5f);
     }
 
     public void AddScore(int points){
         score += points;
         interfaceManager.UpdateScore(score);
+    }
+
+    public void RestartScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void EndGame(){
@@ -56,4 +61,5 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    
 }

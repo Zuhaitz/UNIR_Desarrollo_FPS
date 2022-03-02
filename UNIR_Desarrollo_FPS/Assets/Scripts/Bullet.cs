@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
     private void Hide(){
         active = false;
         gameObject.SetActive(false);
+        GameManager.instance.bulletCollision();
     }
 
     void OnCollisionEnter(Collision coll){
