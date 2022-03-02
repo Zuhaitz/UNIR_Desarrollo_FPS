@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -18,6 +16,8 @@ public class Player : MonoBehaviour
     Vector2 move;
     [SerializeField] float speed = 12f;
 
+    public bool stop = false;
+
     void Awake(){
         mainCamera = Camera.main;
         controller = GetComponent<CharacterController>();
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
     void Start(){
         Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     // Update is called once per frame
@@ -62,6 +63,10 @@ public class Player : MonoBehaviour
 
     private void ShootGun(){
         gun.Shoot();
+    }
+
+    public void StopInput(){
+        controls.Disable();
     }
 
     private void OnEnable()

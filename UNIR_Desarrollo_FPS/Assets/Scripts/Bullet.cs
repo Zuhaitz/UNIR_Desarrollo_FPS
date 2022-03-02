@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -28,7 +26,6 @@ public class Bullet : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision coll){
-        //TODO: Hacer algo con la colision
         Hide();
     }
 }

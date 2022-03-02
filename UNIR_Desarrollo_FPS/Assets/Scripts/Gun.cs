@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -21,7 +19,6 @@ public class Gun : MonoBehaviour
             anim.SetTrigger("Fire");
             GameObject flash = Instantiate(flashPrefab, bulletSpawn.position, bulletSpawn.rotation);
             Destroy(flash, 1f);
-
 
             Vector3 direction = CalculateDirection();
             GameManager.instance.Shoot(bulletSpawn.position, direction);

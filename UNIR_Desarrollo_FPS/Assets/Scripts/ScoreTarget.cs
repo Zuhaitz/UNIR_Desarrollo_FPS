@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreTarget : MonoBehaviour
@@ -8,7 +6,6 @@ public class ScoreTarget : MonoBehaviour
 
 
     void OnCollisionEnter(Collision coll){
-        Debug.Log(coll.gameObject.tag);
         if(coll.gameObject.tag == "Bullet")
         {
             GameManager.instance.AddScore(points);
